@@ -22,4 +22,4 @@ const getCat = (id) =>{
     return cat;
 };
 
-console.log(getCat(1));
+console.log(getCat(2));
