@@ -1,14 +1,25 @@
-const express = require("express");
-const app = express();
+'use strict';
 
-app.use(express.static(__dirname + '/public'));
+const gatos = [
+    {
+        id : 1,
+        nombre: "Jim",
+    },
+    {
+        id: 2,
+        nombre : "Dante"
+    },
+    {
+        id:3,
+        nombre: "Olivia"
+    },
+];
 
-// app.use(express.static('public'));
+const getCat = (id) =>{
+    const cat = gatos.find( (e) =>{
+        return e.id === id;
+    });
+    return cat;
+};
 
-
-
-// app.get('/', (req, res) => {
-//   app.use(express.static("public"))
-// });
-
-app.listen(3000, () => console.log('Listening on port 3000!'));
+console.log(getCat(1));
