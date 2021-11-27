@@ -10,10 +10,14 @@ app.get("/", (req, res, next) => {
     res.render('index' );
     next();
 });
+function capitalizeFirstLetter(str) {
+    return str[0].toUpperCase() + str.slice(1);
+  }
 
 app.post('/',(req, res,next) => {
     const username = req.body.name;
-    res.render('response', { name: username });
+    const nombre = capitalizeFirstLetter(username);
+    res.render('response', { name: nombre });
     next()
 })
 
