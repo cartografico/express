@@ -6,15 +6,14 @@ app.use(express.urlencoded({extended:false}));
 
 app.set("view engine", "pug");
 
-app.get("/hola", (req, res, next) => {
+app.get("/", (req, res, next) => {
     res.render('index' );
     next();
 });
 
-app.post('/hola',(req, res,next) => {
+app.post('/',(req, res,next) => {
     const username = req.body.name;
-    console.log(username);
-    res.send('response', { name: "tarado" });
+    res.render('response', { name: username });
     next()
 })
 
