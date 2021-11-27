@@ -2,5 +2,8 @@ html
     head
         title  Vista con Pug
     body
-        p hola
+        form(action='/hello' method='post')
+        label(for='name')
+        input#name(type='text' name='name')
+        button(type='submit') Enviar
             
