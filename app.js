@@ -16,8 +16,9 @@ function capitalizeFirstLetter(str) {
 
 app.post('/',(req, res,next) => {
     const username = req.body.name;
-    const nombre = capitalizeFirstLetter(username);
-    res.render('response', { name: nombre, empty:" "});
+    const text = capitalizeFirstLetter(username);
+    const nombre = text;
+    res.render('response', { name: nombre, empty:" " });
     console.log(nombre)
     next()
 })
