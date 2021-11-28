@@ -12,14 +12,14 @@ app.get("/", (req, res, next) => {
 });
 function capitalizeFirstLetter(str) {
     return str[0].toUpperCase() + str.slice(1);
-  }
+}
 
 app.post('/',(req, res,next) => {
     const username = req.body.name;
     const nombre = capitalizeFirstLetter(username);
-    res.render('response', { name: nombre });
+    res.render('response', { name: nombre, empty:" "});
+    console.log(nombre)
     next()
 })
-
 
 app.listen(3000, () => console.log("Listening on port 3000!"));
