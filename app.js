@@ -3,7 +3,7 @@ const app = express();
 
 
 app.get('/', (req, res) => {
-    const datos = req.headers['sec-ch-ua'];
+    const datos = req.headers['user-agent'];
     res.send(datos)
     console.log(datos);
 });
