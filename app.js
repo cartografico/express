@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const MONGODB_URI = process.env.MONGODB_URL;
 const date = Date()
 
-mongoose.connect('mongodb://127.0.0.1:27017/test', 
-{ useNewUrlParser: true })
+ 
 
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-1', { useNewUrlParser: true });
 
 mongoose.connection.on('error', err => {
     console.log(err);
