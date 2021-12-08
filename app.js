@@ -33,7 +33,7 @@ app.get('/', (req, res)=>{
     console.log(user)
     
     
-    res.send()
+    res.send(`<h1>El visitante fue almacenado con éxito</h1>`);
 });
 
 
