@@ -5,7 +5,7 @@ const MONGODB_URI = process.env.MONGODB_URL;
 const date = Date()
 
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-1', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/Visitors', { useNewUrlParser: true });
 
 mongoose.connection.on('error', err => {
     console.log(err);
@@ -14,8 +14,8 @@ mongoose.connection.on('error', err => {
 
 app.get('/', (req, res)=>{
     let user = req.query.user;
-    console.log(user)
-    if (user == null){
+
+    if (user == undefined){
         user = "Anónimo";
     } else {
         user = req.query.user + "";
@@ -31,7 +31,6 @@ app.get('/', (req, res)=>{
     const Visitor =  mongoose.models.Visitor || mongoose.model('Visitor', schema);
     Visitor.create({date : date, name : user})
         
-    
     res.send(`<h1>El visitante fue almacenado con éxito</h1>`);
 });
 
