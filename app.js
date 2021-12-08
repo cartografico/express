@@ -16,7 +16,7 @@ mongoose.connection.on('error', err => {
 app.get('/', (req, res)=>{
     let user = req.query.user + "";
 
-    if (user === undefined){
+    if (!user == ""){
         user = "Anónimo";
     }
 
