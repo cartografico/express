@@ -14,10 +14,12 @@ mongoose.connection.on('error', err => {
   }, console.log('Conexión exitosa'));
 
 app.get('/', (req, res)=>{
-    let user = req.query.user + "";
-
-    if (!user == ""){
+    let user = req.query.user;
+    console.log(user)
+    if (user == null){
         user = "Anónimo";
+    } else {
+        user = req.query.user + "";
     }
 
     const schema = mongoose.Schema({
