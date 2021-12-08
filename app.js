@@ -5,7 +5,6 @@ const MONGODB_URI = process.env.MONGODB_URL;
 const date = Date()
 
 
-
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-1', { useNewUrlParser: true });
 
 mongoose.connection.on('error', err => {
@@ -31,9 +30,7 @@ app.get('/', (req, res)=>{
     });
     const Visitor =  mongoose.models.Visitor || mongoose.model('Visitor', schema);
     Visitor.create({date : date, name : user})
-    
-    console.log(user)
-    
+        
     
     res.send(`<h1>El visitante fue almacenado con éxito</h1>`);
 });
