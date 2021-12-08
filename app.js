@@ -6,7 +6,7 @@ const date = Date()
 
 
 // mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/Visitors', { useNewUrlParser: true });
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-1', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/Visitors', { useNewUrlParser: true });
 
 mongoose.connection.on('error', err => {
     console.log(err);
@@ -30,10 +30,17 @@ app.get('/', (req, res)=>{
         }  
     });
     const Visitor =  mongoose.models.Visitor || mongoose.model('Visitor', schema);
-    Visitor.create({date : date, name : user})
+    Visitor.create({date : date, name : user}, function(err) {
+        if (err) return console.error(err)});
         
     res.send(`<h1>El visitante fue almacenado con éxito</h1>`);
+
+    Visitor.find(function(err, Visitors) {
+        if (err) return console.error(err);
+        console.log(Visitors);
+      })
 });
+
 
 app.listen(3000, ()=>{
     console.log("Escuchando el puerto 3000!")
