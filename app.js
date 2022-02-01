@@ -16,7 +16,7 @@ mongoose.connection.on('error', err => {
 app.get('/', (req, res)=>{
     let user = req.query.user;
 
-    if (user == undefined){
+    if (user == undefined || user == null){
         user = "Anónimo";
     } else {
         user = req.query.user + "";
@@ -40,7 +40,6 @@ app.get('/', (req, res)=>{
         console.log(Visitors);
       })
 });
-
 
 app.listen(3000, ()=>{
     console.log("Escuchando el puerto 3000!")
